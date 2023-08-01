@@ -1,9 +1,7 @@
-import { useState } from 'react'
 import './App.css'
 import MediaCard from './MediaCard.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
@@ -12,6 +10,7 @@ function App() {
       <MediaCard />
     </>
   )
+
 }
 
 export default App
