@@ -1,5 +1,6 @@
 import './App.css'
 import MediaCard from './MediaCard.jsx'
+import { CssVarsProvider } from '@mui/joy/styles';
 
 function App() {
   const mockGame1 = {
@@ -40,7 +41,7 @@ function App() {
   const mockMedia = [mockGame1, mockGame2, mockBook1, mockShow1, mockMovie1]
 
   return (
-    <>
+    <CssVarsProvider>
       {mockMedia.map((media) => {
         return (
           <MediaCard
@@ -49,10 +50,10 @@ function App() {
             mediaType={media.mediaType}
             mediaInfo={media.mediaInfo}
             mediaImage={media.mediaImage}
-            />
+          />
         );
       })}
-    </>
+    </CssVarsProvider>
   )
 
 }
