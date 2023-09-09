@@ -1,6 +1,7 @@
 import Card from '@mui/joy/Card';
 import Typography from '@mui/joy/Typography';
 import AspectRatio from '@mui/joy/AspectRatio';
+import Button from '@mui/joy/Button';
 
 function MediaCard({ mediaName, mediaType, mediaInfo, mediaImage }) {  
   return (
@@ -18,9 +19,11 @@ function MediaCard({ mediaName, mediaType, mediaInfo, mediaImage }) {
         borderRadius: 'sm',
         boxShadow: 'md',
       }}>
+
       <Typography level="title-lg" textColor="inherit">{mediaName}</Typography>
       <Typography level="title-md" textColor="inherit">{mediaType}</Typography>
       <Typography level="body-sm" textColor="inherit">{mediaInfo}</Typography>
+
       <AspectRatio sx={{ width: 100 }}>
         <img
           id="mediaImage"
@@ -28,6 +31,19 @@ function MediaCard({ mediaName, mediaType, mediaInfo, mediaImage }) {
           alt="placeholder media image"
         />
       </AspectRatio>
+
+      <div>
+        <Button size="md" color="success">
+            Playing Now
+        </Button>
+        <Button size="md" color="primary">
+            Backlog
+        </Button>
+        <Button size="md" color="neutral">
+            Complete
+        </Button>
+      </div>
+
     </Card>
   );
   
