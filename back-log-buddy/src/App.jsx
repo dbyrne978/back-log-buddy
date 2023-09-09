@@ -8,12 +8,14 @@ function App() {
     mediaType : "Game",
     mediaInfo : "GOAT Final Fantasy. Truly the best world and gameplay.",
     mediaImage : null,
+    completionStatus : "Backlog"
   }
   const mockGame2 = {
     mediaName : "Pikmin 4",
     mediaType : "Game",
     mediaInfo : "Highly anticipated. Just look at those little guys!",
     mediaImage : null,
+    completionStatus : "Backlog"
   }
   const mockBook1 = {
     mediaName : "A Game of Thrones",
@@ -22,6 +24,7 @@ function App() {
       and enemies, the fate of the Starks hangs perilously in the balance, as each side endeavors \
       to win that deadliest of conflicts: the game of thrones.",
     mediaImage : null,
+    completionStatus : "Backlog"
   }
   const mockShow1 = {
     mediaName : "Loki",
@@ -29,6 +32,7 @@ function App() {
     mediaInfo : "The mercurial villain Loki resumes his role as the God of Mischief in a new \
       series that takes place after the events of “Avengers: Endgame.”",
     mediaImage : null,
+    completionStatus : "Backlog"
   }
   const mockMovie1 = {
     mediaName : "Dungeons & Dragons: Honor Among Thieves",
@@ -37,6 +41,7 @@ function App() {
       retrieve a lost relic, but things go dangerously awry when they run afoul of the wrong \
       people.",
     mediaImage : null,
+    completionStatus : "Backlog"
   }
   const mockMedia = [mockGame1, mockGame2, mockBook1, mockShow1, mockMovie1]
 
@@ -50,6 +55,7 @@ function App() {
             mediaType={media.mediaType}
             mediaInfo={media.mediaInfo}
             mediaImage={media.mediaImage}
+            completionStatus={media.completionStatus}
           />
         );
       })}

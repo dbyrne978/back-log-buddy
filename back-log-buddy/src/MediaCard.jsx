@@ -1,9 +1,9 @@
 import Card from '@mui/joy/Card';
 import Typography from '@mui/joy/Typography';
 import AspectRatio from '@mui/joy/AspectRatio';
-import Button from '@mui/joy/Button';
+import MediaCardCompletionStatus from './MediaCardCompletionStatus.jsx'
 
-function MediaCard({ mediaName, mediaType, mediaInfo, mediaImage }) {  
+function MediaCard({ mediaName, mediaType, mediaInfo, mediaImage, completionStatus }) {
   return (
     <Card
       variant='outlined'
@@ -32,17 +32,7 @@ function MediaCard({ mediaName, mediaType, mediaInfo, mediaImage }) {
         />
       </AspectRatio>
 
-      <div>
-        <Button size="md" color="success">
-            Playing Now
-        </Button>
-        <Button size="md" color="primary">
-            Backlog
-        </Button>
-        <Button size="md" color="neutral">
-            Complete
-        </Button>
-      </div>
+      <MediaCardCompletionStatus completionStatus={completionStatus} />
 
     </Card>
   );
