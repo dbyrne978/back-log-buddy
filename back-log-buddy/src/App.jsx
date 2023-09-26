@@ -1,5 +1,6 @@
 import './App.css'
 import MediaCard from './components/MediaCard.jsx'
+import MediaCardNew from './components/MediaCardNew.jsx'
 import * as React from 'react';
 import { CssVarsProvider } from '@mui/joy/styles';
 
@@ -8,6 +9,7 @@ function App({ mediaList }) {
 
   return (
     <CssVarsProvider>
+
       {currentMediaList.map(media => {
         return (
           <MediaCard
@@ -20,6 +22,9 @@ function App({ mediaList }) {
           />
         );
       })}
+      
+      <MediaCardNew />
+      
     </CssVarsProvider>
   )
 }
