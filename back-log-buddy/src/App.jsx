@@ -1,5 +1,5 @@
 import './App.css'
-import MediaCard from './MediaCard.jsx'
+import MediaCard from './components/MediaCard.jsx'
 import { CssVarsProvider } from '@mui/joy/styles';
 
 function App({ mediaList }) {
