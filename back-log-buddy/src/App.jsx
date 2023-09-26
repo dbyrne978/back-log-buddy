@@ -1,11 +1,14 @@
 import './App.css'
 import MediaCard from './components/MediaCard.jsx'
+import * as React from 'react';
 import { CssVarsProvider } from '@mui/joy/styles';
 
 function App({ mediaList }) {
+  const [currentMediaList, setCurrentMediaList] = React.useState(mediaList)
+
   return (
     <CssVarsProvider>
-      {mediaList.map(media => {
+      {currentMediaList.map(media => {
         return (
           <MediaCard
             key={media.mediaName + media.mediaType}
