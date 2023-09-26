@@ -27,7 +27,7 @@ function MediaCard({ mediaName, mediaType, mediaInfo, mediaImage, completionStat
       <AspectRatio sx={{ width: 100 }}>
         <img
           id="mediaImage"
-          src={mediaImage ? mediaImage : "/placeholder-media-image.bmp"}
+          src={mediaImage ? mediaImage : "./src/assets/placeholder-media-image.bmp"}
           alt="placeholder media image"
         />
       </AspectRatio>
