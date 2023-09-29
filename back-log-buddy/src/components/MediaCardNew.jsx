@@ -4,6 +4,8 @@ import MediaCardCompletionStatus from './MediaCardCompletionStatus.jsx'
 import Input from '@mui/joy/Input';
 import Select from '@mui/joy/Select';
 import Option from '@mui/joy/Option';
+import Typography from '@mui/joy/Typography';
+import InfoOutlined from '@mui/icons-material/InfoOutlined';
 
 function MediaCardNew() {
   return (
@@ -21,6 +23,10 @@ function MediaCardNew() {
         borderRadius: 'sm',
         boxShadow: 'md',
       }}>
+        
+      <Typography level="title-lg" startDecorator={<InfoOutlined />}>
+        Add new card
+      </Typography>
 
       <Input
         placeholder="Media Name"
