@@ -3,6 +3,7 @@ import Typography from '@mui/joy/Typography';
 import AspectRatio from '@mui/joy/AspectRatio';
 import MediaCardCompletionStatus from './MediaCardCompletionStatus.jsx'
 import PropTypes from 'prop-types';
+import Divider from '@mui/joy/Divider';
 
 function MediaCard({ mediaName, mediaType, mediaInfo, mediaImage, completionStatus }) {
   return (
@@ -22,6 +23,7 @@ function MediaCard({ mediaName, mediaType, mediaInfo, mediaImage, completionStat
       }}>
 
       <Typography level="title-lg" textColor="inherit">{mediaName}</Typography>
+      <Divider inset="none" />
       <Typography level="title-md" textColor="inherit">{mediaType}</Typography>
       <Typography level="body-sm" textColor="inherit">{mediaInfo}</Typography>
 
