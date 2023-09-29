@@ -7,6 +7,7 @@ import Option from '@mui/joy/Option';
 import Typography from '@mui/joy/Typography';
 import InfoOutlined from '@mui/icons-material/InfoOutlined';
 import Divider from '@mui/joy/Divider';
+import Button from '@mui/joy/Button';
 
 function MediaCardNew() {
   return (
@@ -73,6 +74,8 @@ function MediaCardNew() {
       </AspectRatio>
 
       <MediaCardCompletionStatus />
+
+      <Button type="submit">Submit</Button>
 
     </Card>
   );

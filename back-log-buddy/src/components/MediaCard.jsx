@@ -1,41 +1,41 @@
 import Card from '@mui/joy/Card';
 import Typography from '@mui/joy/Typography';
-import AspectRatio from '@mui/joy/AspectRatio';
-import MediaCardCompletionStatus from './MediaCardCompletionStatus.jsx'
 import PropTypes from 'prop-types';
-import Divider from '@mui/joy/Divider';
+import CardContent from '@mui/joy/CardContent';
+import CardOverflow from '@mui/joy/CardOverflow';
+import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 
-function MediaCard({ mediaName, mediaType, mediaInfo, mediaImage, completionStatus }) {
+const MediaCard = ({ mediaName, mediaType, completionStatus }) => {
   return (
-    <Card
-      variant='outlined'
-      sx={{
-        width: 300,
-        mx: 'auto', // margin left & right
-        my: 4, // margin top & bottom
-        py: 3, // padding top & bottom
-        px: 2, // padding left & right
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 2,
-        borderRadius: 'sm',
-        boxShadow: 'md',
-      }}>
+    <Card orientation="horizontal" variant="outlined" sx={{ width: 260 }}>
+      <CardOverflow>
+        <SportsEsportsIcon />
+      </CardOverflow>
 
-      <Typography level="title-lg" textColor="inherit">{mediaName}</Typography>
-      <Divider inset="none" />
-      <Typography level="title-md" textColor="inherit">{mediaType}</Typography>
-      <Typography level="body-sm" textColor="inherit">{mediaInfo}</Typography>
-
-      <AspectRatio sx={{ width: 100 }}>
-        <img
-          id="mediaImage"
-          src={mediaImage ? mediaImage : "./src/assets/placeholder-media-image.bmp"}
-          alt="placeholder media image"
-        />
-      </AspectRatio>
-
-      <MediaCardCompletionStatus completionStatus={completionStatus} />
+      <CardContent>
+        <Typography fontWeight="md" textColor="success.plainColor">
+          {mediaName}
+        </Typography>
+        <Typography level="body-sm">{mediaType}</Typography>
+      </CardContent>
+      
+      <CardOverflow
+        variant="soft"
+        color="primary"
+        sx={{
+          px: 0.2,
+          writingMode: 'vertical-rl',
+          textAlign: 'center',
+          fontSize: 'xs',
+          fontWeight: 'xl',
+          letterSpacing: '1px',
+          textTransform: 'uppercase',
+          borderLeft: '1px solid',
+          borderColor: 'divider',
+        }}
+      >
+        {completionStatus}
+      </CardOverflow>
     </Card>
   );
 }
