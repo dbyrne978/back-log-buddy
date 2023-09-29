@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Button from '@mui/joy/Button';
 
-function MediaCardCompletionStatus({ completionStatus }) {
+function MediaCardCompletionStatus() {
   const [playingNowVariant, setPlayingNowVariant] = React.useState('soft');
   const [backlogVariant, setBacklogVariant] = React.useState('solid');
   const [completeVariant, setCompleteVariant] = React.useState('soft');

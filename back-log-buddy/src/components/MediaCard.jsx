@@ -2,6 +2,7 @@ import Card from '@mui/joy/Card';
 import Typography from '@mui/joy/Typography';
 import AspectRatio from '@mui/joy/AspectRatio';
 import MediaCardCompletionStatus from './MediaCardCompletionStatus.jsx'
+import PropTypes from 'prop-types';
 
 function MediaCard({ mediaName, mediaType, mediaInfo, mediaImage, completionStatus }) {
   return (
@@ -33,10 +34,16 @@ function MediaCard({ mediaName, mediaType, mediaInfo, mediaImage, completionStat
       </AspectRatio>
 
       <MediaCardCompletionStatus completionStatus={completionStatus} />
-
     </Card>
   );
-  
+}
+
+MediaCard.propTypes = {
+  mediaName: PropTypes.string,
+  mediaType: PropTypes.string,
+  mediaInfo: PropTypes.string,
+  mediaImage: PropTypes.string,
+  completionStatus: PropTypes.string
 }
 
 export default MediaCard
