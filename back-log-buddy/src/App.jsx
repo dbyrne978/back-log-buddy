@@ -24,7 +24,10 @@ function App({ mediaList }) {
         );
       })}
       
-      <MediaCardNew />
+      <MediaCardNew 
+        currentMediaList
+        setCurrentMediaList
+      />
       
     </CssVarsProvider>
   )
