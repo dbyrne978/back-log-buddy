@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import CardContent from '@mui/joy/CardContent';
 import CardOverflow from '@mui/joy/CardOverflow';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
+import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import TvIcon from '@mui/icons-material/Tv';
+import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
 
 const MediaCard = ({ mediaName, mediaType, completionStatus }) => {
   return (
@@ -18,7 +21,10 @@ const MediaCard = ({ mediaName, mediaType, completionStatus }) => {
           alignItems: 'center'
         }}
       >
-        <SportsEsportsIcon />
+        {mediaType == 'Game' && <SportsEsportsIcon />}
+        {mediaType == 'Book' && <AutoStoriesIcon />}
+        {mediaType == 'TV Show' && <TvIcon />}
+        {mediaType == 'Movie' && <LocalMoviesIcon />}
       </CardOverflow>
 
       <CardContent
