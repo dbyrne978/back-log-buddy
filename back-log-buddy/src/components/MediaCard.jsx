@@ -7,12 +7,26 @@ import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 
 const MediaCard = ({ mediaName, mediaType, completionStatus }) => {
   return (
-    <Card orientation="horizontal" variant="outlined" sx={{ width: 260 }}>
-      <CardOverflow>
+    <Card
+      orientation="horizontal"
+      variant="outlined"
+      sx={{ width: 260 }}
+    >
+      <CardOverflow
+        sx={{ 
+          display: 'flex',
+          alignItems: 'center'
+        }}
+      >
         <SportsEsportsIcon />
       </CardOverflow>
 
-      <CardContent>
+      <CardContent
+        sx={{ 
+          display: 'flex',
+          justifyContent: 'center'
+        }}
+      >
         <Typography fontWeight="md" textColor="success.plainColor">
           {mediaName}
         </Typography>
