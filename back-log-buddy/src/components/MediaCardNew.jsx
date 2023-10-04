@@ -1,6 +1,4 @@
 import Card from '@mui/joy/Card';
-import AspectRatio from '@mui/joy/AspectRatio';
-import MediaCardCompletionStatus from './MediaCardCompletionStatus.jsx'
 import Input from '@mui/joy/Input';
 import Select from '@mui/joy/Select';
 import Option from '@mui/joy/Option';
@@ -45,35 +43,18 @@ function MediaCardNew() {
         }}
       />
 
-      <Select defaultValue="Media Type">
+      <Select defaultValue="Game">
         <Option value="Book">Book</Option>
         <Option value="TV Show">TV Show</Option>
         <Option value="Game">Game</Option>
         <Option value="Movie">Movie</Option>
       </Select>
 
-      <Input
-        placeholder="Media Info"
-        sx={{
-          '&::before': {
-            display: 'none',
-          },
-          '&:focus-within': {
-            outline: '2px solid var(--Input-focusedHighlight)',
-            outlineOffset: '2px',
-          },
-        }}
-      />
-
-      <AspectRatio sx={{ width: 100 }}>
-        <img
-          id="mediaImage"
-          src={"./src/assets/placeholder-media-image.bmp"}
-          alt="placeholder media image"
-        />
-      </AspectRatio>
-
-      <MediaCardCompletionStatus />
+      <Select defaultValue="Backlog">
+        <Option value="Complete">Complete</Option>
+        <Option value="Backlog">Backlog</Option>
+        <Option value="Playing">Playing</Option>
+      </Select>
 
       <Button type="submit">Submit</Button>
 
