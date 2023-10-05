@@ -26,3 +26,4 @@ hide BacklogItemAdder
 add drag and drop
 add columns
   columns merge if on smaller screen
+add floating labels to title and format in BacklogItemAdder

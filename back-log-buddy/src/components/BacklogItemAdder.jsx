@@ -18,7 +18,7 @@ import PropTypes from 'prop-types';
 // adds new backlog item and media card to display it
 function MediaCardNew({ currentMediaList, setCurrentMediaList }) {
   const emptyBacklogItem = {
-    mediaName: '',
+    title: '',
     format: 'Movie',
     completionStatus: 'Backlog',
   }
@@ -53,15 +53,16 @@ function MediaCardNew({ currentMediaList, setCurrentMediaList }) {
           <FormControl>
             <FormLabel>Title</FormLabel>
             <Input
-              value={newBacklogItem.mediaName}
+              required
+              value={newBacklogItem.title}
               onChange={(event) =>
-                setNewBacklogItem({...newBacklogItem, mediaName: event.target.value})
+                setNewBacklogItem({...newBacklogItem, title: event.target.value})
               }
             />
           </FormControl>
 
           <FormControl>
-            <FormLabel>Media Type</FormLabel>
+            <FormLabel>Format</FormLabel>
             <Select
               placeholder="Choose one…"
               value={newBacklogItem.format}
