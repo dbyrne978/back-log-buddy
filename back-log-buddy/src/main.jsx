@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
+import Sheet from '@mui/joy/Sheet';
 
 const mockGame1 = {
   title : "Final Fantasy XII",
