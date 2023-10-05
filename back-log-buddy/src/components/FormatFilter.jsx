@@ -21,21 +21,38 @@ const FormatFilter = ({ formatFilter, setFormatFilter }) => {
         justifyContent: 'center'
       }}
     >
-      <Button value='Show All'>Show All</Button>
+      <Button
+        value='Show All'
+        sx={{ '&:focus': { outline: 'none' } }}
+      >
+        Show All
+      </Button>
 
-      <IconButton value='Game'>
+      <IconButton
+        value='Game'
+        sx={{ '&:focus': { outline: 'none' } }}
+      >
         <SportsEsportsIcon />
       </IconButton>
 
-      <IconButton value='Book'>
+      <IconButton
+        value='Book'
+        sx={{ '&:focus': { outline: 'none' } }}
+      >
         <AutoStoriesIcon />
       </IconButton>
 
-      <IconButton value='TV Show'>
+      <IconButton
+        value='TV Show'
+        sx={{ '&:focus': { outline: 'none' } }}
+      >
         <TvIcon />
       </IconButton>
 
-      <IconButton value='Movie'>
+      <IconButton
+        value='Movie'
+        sx={{ '&:focus': { outline: 'none' } }}
+      >
         <LocalMoviesIcon />
       </IconButton>
 
