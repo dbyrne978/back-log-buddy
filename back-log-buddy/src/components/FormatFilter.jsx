@@ -10,10 +10,14 @@ import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
 const FormatFilter = ({ formatFilter, setFormatFilter }) => {
   return (
     <ToggleButtonGroup
+      color='primary'
       variant="solid"
       value={formatFilter}
       onChange={(event, newValue) => {
         setFormatFilter(newValue);
+      }}
+      sx={{
+        '--ButtonGroup-separatorSize': '0px',
       }}
     >
       <Button value='Show All'>Show All</Button>

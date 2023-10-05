@@ -8,9 +8,9 @@ import PropTypes from 'prop-types';
 
 function App({ mediaList }) {
   const [currentMediaList, setCurrentMediaList] = React.useState(mediaList)
-  const [formatFilter, setFormatFilter] = React.useState('Show All')
+  const [formatFilter, setFormatFilter] = React.useState(null)
 
-  const filteredItems = formatFilter == 'Show All'
+  const filteredItems = ((formatFilter == 'Show All') || (formatFilter === null))
     ? currentMediaList
     : currentMediaList.filter(media => media.format == formatFilter)
 
