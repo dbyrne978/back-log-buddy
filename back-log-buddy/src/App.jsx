@@ -1,6 +1,6 @@
 import './App.css'
-import MediaCard from './components/BacklogItem.jsx'
-import MediaCardNew from './components/BacklogItemAdder.jsx'
+import BacklogItem from './components/BacklogItem.jsx'
+import BacklogItemAdder from './components/BacklogItemAdder.jsx'
 import FormatFilter from './components/FormatFilter.jsx'
 import * as React from 'react';
 import { CssVarsProvider } from '@mui/joy/styles';
@@ -8,7 +8,11 @@ import PropTypes from 'prop-types';
 
 function App({ mediaList }) {
   const [currentMediaList, setCurrentMediaList] = React.useState(mediaList)
-  const [formatFilter, setFormatFilter] = React.useState('all')
+  const [formatFilter, setFormatFilter] = React.useState('Show All')
+
+  const filteredItems = formatFilter == 'Show All'
+    ? currentMediaList
+    : currentMediaList.filter(media => media.format == formatFilter)
 
   return (
     <CssVarsProvider>
@@ -17,9 +21,9 @@ function App({ mediaList }) {
         setFormatFilter={setFormatFilter}
       />
 
-      {currentMediaList.map(media => {
+      {filteredItems.map(media => {
         return (
-          <MediaCard
+          <BacklogItem
             key={media.title + media.format}
             title={media.title}
             format={media.format}
@@ -28,7 +32,7 @@ function App({ mediaList }) {
         );
       })}
       
-      <MediaCardNew
+      <BacklogItemAdder
         currentMediaList={currentMediaList}
         setCurrentMediaList={setCurrentMediaList}
       />

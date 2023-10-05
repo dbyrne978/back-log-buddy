@@ -16,21 +16,21 @@ const FormatFilter = ({ formatFilter, setFormatFilter }) => {
         setFormatFilter(newValue);
       }}
     >
-      <Button value="all">Show All</Button>
+      <Button value='Show All'>Show All</Button>
 
-      <IconButton value='games'>
+      <IconButton value='Game'>
         <SportsEsportsIcon />
       </IconButton>
 
-      <IconButton value='books'>
+      <IconButton value='Book'>
         <AutoStoriesIcon />
       </IconButton>
 
-      <IconButton value='shows'>
+      <IconButton value='TV Show'>
         <TvIcon />
       </IconButton>
 
-      <IconButton value='movies'>
+      <IconButton value='Movie'>
         <LocalMoviesIcon />
       </IconButton>
 

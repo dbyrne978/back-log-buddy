@@ -25,3 +25,4 @@ add edit to title/format (with validation)
 hide BacklogItemAdder
 add drag and drop
 add columns
+  columns merge if on smaller screen
