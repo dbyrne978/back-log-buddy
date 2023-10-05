@@ -19,7 +19,7 @@ import PropTypes from 'prop-types';
 function MediaCardNew({ currentMediaList, setCurrentMediaList }) {
   const emptyBacklogItem = {
     mediaName: '',
-    mediaType: 'Movie',
+    format: 'Movie',
     completionStatus: 'Backlog',
   }
 
@@ -64,9 +64,9 @@ function MediaCardNew({ currentMediaList, setCurrentMediaList }) {
             <FormLabel>Media Type</FormLabel>
             <Select
               placeholder="Choose one…"
-              value={newBacklogItem.mediaType}
+              value={newBacklogItem.format}
               onChange={(event, newValue) =>
-                setNewBacklogItem({...newBacklogItem, mediaType: newValue})
+                setNewBacklogItem({...newBacklogItem, format: newValue})
               }
             >
               <Option value='Movie'>Movie</Option>

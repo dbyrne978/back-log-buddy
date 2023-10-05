@@ -4,28 +4,28 @@ import App from './App.jsx'
 import './index.css'
 
 const mockGame1 = {
-  mediaName : "Final Fantasy XII",
-  mediaType : "Game",
+  title : "Final Fantasy XII",
+  format : "Game",
   completionStatus : "Complete"
 }
 const mockGame2 = {
-  mediaName : "Pikmin 4",
-  mediaType : "Game",
+  title : "Pikmin 4",
+  format : "Game",
   completionStatus : "Backlog"
 }
 const mockBook1 = {
-  mediaName : "A Game of Thrones",
-  mediaType : "Book",
+  title : "A Game of Thrones",
+  format : "Book",
   completionStatus : "Backlog"
 }
 const mockShow1 = {
-  mediaName : "Loki",
-  mediaType : "TV Show",
+  title : "Loki",
+  format : "TV Show",
   completionStatus : "Playing"
 }
 const mockMovie1 = {
-  mediaName : "Dungeons & Dragons: Honor Among Thieves",
-  mediaType : "Movie",
+  title : "Dungeons & Dragons: Honor Among Thieves",
+  format : "Movie",
   completionStatus : "Backlog"
 }
 const mockMedia = [mockGame1, mockGame2, mockBook1, mockShow1, mockMovie1]

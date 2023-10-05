@@ -1,6 +1,6 @@
 import './App.css'
-import MediaCard from './components/MediaCard.jsx'
-import MediaCardNew from './components/MediaCardNew.jsx'
+import MediaCard from './components/BacklogItem.jsx'
+import MediaCardNew from './components/BacklogItemAdder.jsx'
 import * as React from 'react';
 import { CssVarsProvider } from '@mui/joy/styles';
 import PropTypes from 'prop-types';
@@ -14,9 +14,9 @@ function App({ mediaList }) {
       {currentMediaList.map(media => {
         return (
           <MediaCard
-            key={media.mediaName + media.mediaType}
-            mediaName={media.mediaName}
-            mediaType={media.mediaType}
+            key={media.title + media.format}
+            title={media.title}
+            format={media.format}
             completionStatus={media.completionStatus}
           />
         );

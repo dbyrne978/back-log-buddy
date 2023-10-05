@@ -8,7 +8,7 @@ import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import TvIcon from '@mui/icons-material/Tv';
 import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
 
-const MediaCard = ({ mediaName, mediaType, completionStatus }) => {
+const MediaCard = ({ title, format, completionStatus }) => {
   return (
     <Card
       orientation="horizontal"
@@ -21,10 +21,10 @@ const MediaCard = ({ mediaName, mediaType, completionStatus }) => {
           alignItems: 'center'
         }}
       >
-        {mediaType == 'Game' && <SportsEsportsIcon />}
-        {mediaType == 'Book' && <AutoStoriesIcon />}
-        {mediaType == 'TV Show' && <TvIcon />}
-        {mediaType == 'Movie' && <LocalMoviesIcon />}
+        {format == 'Game' && <SportsEsportsIcon />}
+        {format == 'Book' && <AutoStoriesIcon />}
+        {format == 'TV Show' && <TvIcon />}
+        {format == 'Movie' && <LocalMoviesIcon />}
       </CardOverflow>
 
       <CardContent
@@ -34,9 +34,9 @@ const MediaCard = ({ mediaName, mediaType, completionStatus }) => {
         }}
       >
         <Typography fontWeight="md" textColor="success.plainColor">
-          {mediaName}
+          {title}
         </Typography>
-        <Typography level="body-sm">{mediaType}</Typography>
+        <Typography level="body-sm">{format}</Typography>
       </CardContent>
       
       <CardOverflow
@@ -61,8 +61,8 @@ const MediaCard = ({ mediaName, mediaType, completionStatus }) => {
 }
 
 MediaCard.propTypes = {
-  mediaName: PropTypes.string,
-  mediaType: PropTypes.string,
+  title: PropTypes.string,
+  format: PropTypes.string,
   mediaInfo: PropTypes.string,
   mediaImage: PropTypes.string,
   completionStatus: PropTypes.string
