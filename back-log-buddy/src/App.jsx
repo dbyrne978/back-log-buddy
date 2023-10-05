@@ -17,16 +17,14 @@ function App({ mediaList }) {
             key={media.mediaName + media.mediaType}
             mediaName={media.mediaName}
             mediaType={media.mediaType}
-            mediaInfo={media.mediaInfo}
-            mediaImage={media.mediaImage}
             completionStatus={media.completionStatus}
           />
         );
       })}
       
       <MediaCardNew 
-        currentMediaList
-        setCurrentMediaList
+        currentMediaList={currentMediaList}
+        setCurrentMediaList={setCurrentMediaList}
       />
       
     </CssVarsProvider>

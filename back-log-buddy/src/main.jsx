@@ -6,7 +6,7 @@ import './index.css'
 const mockGame1 = {
   mediaName : "Final Fantasy XII",
   mediaType : "Game",
-  completionStatus : "Backlog"
+  completionStatus : "Complete"
 }
 const mockGame2 = {
   mediaName : "Pikmin 4",
@@ -21,7 +21,7 @@ const mockBook1 = {
 const mockShow1 = {
   mediaName : "Loki",
   mediaType : "TV Show",
-  completionStatus : "Backlog"
+  completionStatus : "Playing"
 }
 const mockMovie1 = {
   mediaName : "Dungeons & Dragons: Honor Among Thieves",

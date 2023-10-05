@@ -12,8 +12,19 @@ import Select from '@mui/joy/Select';
 import Option from '@mui/joy/Option';
 import Radio from '@mui/joy/Radio';
 import RadioGroup from '@mui/joy/RadioGroup';
+import * as React from 'react';
+import PropTypes from 'prop-types';
 
+// adds new backlog item and media card to display it
 function MediaCardNew({ currentMediaList, setCurrentMediaList }) {
+  const emptyBacklogItem = {
+    mediaName: '',
+    mediaType: 'Movie',
+    completionStatus: 'Backlog',
+  }
+
+  const [newBacklogItem, setNewBacklogItem] = React.useState({...emptyBacklogItem})
+
   return (
     <Card
       variant="outlined"
@@ -32,40 +43,70 @@ function MediaCardNew({ currentMediaList, setCurrentMediaList }) {
       <Divider inset="none" />
 
       <CardContent>
-        <FormControl>
-          <FormLabel>Title</FormLabel>
-          <Input />
-        </FormControl>
+        <form
+          onSubmit={(event) => {
+            event.preventDefault();
+            setCurrentMediaList(currentMediaList.concat(newBacklogItem));
+            setNewBacklogItem({...emptyBacklogItem})
+          }}
+        >
+          <FormControl>
+            <FormLabel>Title</FormLabel>
+            <Input
+              value={newBacklogItem.mediaName}
+              onChange={(event) =>
+                setNewBacklogItem({...newBacklogItem, mediaName: event.target.value})
+              }
+            />
+          </FormControl>
 
-        <FormControl>
-          <FormLabel>Media Type</FormLabel>
-          <Select placeholder="Choose one…">
-            <Option value='Movie'>Movie</Option>
-            <Option value='TV Show'>TV Show</Option>
-            <Option value='Game'>Game</Option>
-            <Option value='Book'>Book</Option>
-          </Select>
-        </FormControl>
+          <FormControl>
+            <FormLabel>Media Type</FormLabel>
+            <Select
+              placeholder="Choose one…"
+              value={newBacklogItem.mediaType}
+              onChange={(event, newValue) =>
+                setNewBacklogItem({...newBacklogItem, mediaType: newValue})
+              }
+            >
+              <Option value='Movie'>Movie</Option>
+              <Option value='TV Show'>TV Show</Option>
+              <Option value='Game'>Game</Option>
+              <Option value='Book'>Book</Option>
+            </Select>
+          </FormControl>
 
-        <FormControl>
-          <RadioGroup
-            name="completion-status-radio-group"
-            orientation='horizontal'
-          >
-            <Radio value="Backlog" label="Backlog" />
-            <Radio value="Complete" label="Complete" />
-            <Radio value="Playing" label="Playing" />
-          </RadioGroup>
-        </FormControl>
+          <FormControl>
+            <RadioGroup
+              name="completion-status-radio-group"
+              orientation='horizontal'
+              value={newBacklogItem.completionStatus}
+              onChange={(event) =>
+                setNewBacklogItem({...newBacklogItem, completionStatus: event.target.value})
+              }
+            >
+              <Radio value="Backlog" label="Backlog" />
+              <Radio value="Complete" label="Complete" />
+              <Radio value="Playing" label="Playing" />
+            </RadioGroup>
+          </FormControl>
 
-        <CardActions>
-          <Button variant="solid" color="primary">
-            Add card
-          </Button>
-        </CardActions>
+          <CardActions>
+            <Button variant="solid" color="primary" type='submit'>
+              Add Backlog Item
+            </Button>
+          </CardActions>
+
+        </form>
       </CardContent>
     </Card>
   );
+}
+
+MediaCardNew.propTypes = {
+  currentMediaList: PropTypes.array,
+  setCurrentMediaList: PropTypes.func,
+  completionStatus: PropTypes.string
 }
 
 export default MediaCardNew
