@@ -18,6 +18,7 @@ const FormatFilter = ({ formatFilter, setFormatFilter }) => {
       }}
       sx={{
         '--ButtonGroup-separatorSize': '0px',
+        justifyContent: 'center'
       }}
     >
       <Button value='Show All'>Show All</Button>
