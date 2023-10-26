@@ -46,8 +46,16 @@ function MediaCardNew({ currentMediaList, setCurrentMediaList }) {
         <form
           onSubmit={(event) => {
             event.preventDefault();
-            setCurrentMediaList(currentMediaList.concat(newBacklogItem));
-            setNewBacklogItem({...emptyBacklogItem})
+
+            var alreadyExists = currentMediaList.find(
+              (backlogItem) => backlogItem.title == newBacklogItem.title
+            )
+
+            if (alreadyExists) alert("This item is already in your log")
+            else {
+              setCurrentMediaList(currentMediaList.concat(newBacklogItem));
+              setNewBacklogItem({...emptyBacklogItem})
+            }
           }}
         >
           <FormControl>
