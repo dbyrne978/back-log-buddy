@@ -55,7 +55,6 @@ function MediaCardNew({ backlogItems, setBacklogItems }) {
 
             if (alreadyExists) alert("This item is already in your log")
             else {
-              console.log(newBacklogItem)
               axios
                 .post('http://localhost:3001/backlogItems', newBacklogItem)
                 .then(response => {

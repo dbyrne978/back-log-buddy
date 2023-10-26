@@ -7,56 +7,60 @@ import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import TvIcon from '@mui/icons-material/Tv';
 import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
+import Box from '@mui/joy/Box';
 
-const MediaCard = ({ title, format, completionStatus }) => {
+
+const MediaCard = ({ title, format, completionStatus}) => {
   return (
-    <Card
-      orientation="horizontal"
-      variant="outlined"
-      sx={{ width: 260 }}
-    >
-      <CardOverflow
-        sx={{ 
-          display: 'flex',
-          alignItems: 'center'
-        }}
+    <Box sx={{ display: 'flex' }}>
+      <Card
+        orientation="horizontal"
+        variant="outlined"
+        sx={{ width: 260 }}
       >
-        {format == 'Game' && <SportsEsportsIcon />}
-        {format == 'Book' && <AutoStoriesIcon />}
-        {format == 'TV Show' && <TvIcon />}
-        {format == 'Movie' && <LocalMoviesIcon />}
-      </CardOverflow>
+        <CardOverflow
+          sx={{ 
+            display: 'flex',
+            alignItems: 'center'
+          }}
+        >
+          {format == 'Game' && <SportsEsportsIcon />}
+          {format == 'Book' && <AutoStoriesIcon />}
+          {format == 'TV Show' && <TvIcon />}
+          {format == 'Movie' && <LocalMoviesIcon />}
+        </CardOverflow>
 
-      <CardContent
-        sx={{ 
-          display: 'flex',
-          justifyContent: 'center'
-        }}
-      >
-        <Typography fontWeight="md" textColor="success.plainColor">
-          {title}
-        </Typography>
-        <Typography level="body-sm">{format}</Typography>
-      </CardContent>
-      
-      <CardOverflow
-        variant="soft"
-        color="primary"
-        sx={{
-          px: 0.2,
-          writingMode: 'vertical-rl',
-          textAlign: 'center',
-          fontSize: 'xs',
-          fontWeight: 'xl',
-          letterSpacing: '1px',
-          textTransform: 'uppercase',
-          borderLeft: '1px solid',
-          borderColor: 'divider',
-        }}
-      >
-        {completionStatus}
-      </CardOverflow>
-    </Card>
+        <CardContent
+          sx={{ 
+            display: 'flex',
+            justifyContent: 'center'
+          }}
+        >
+          <Typography fontWeight="md" textColor="success.plainColor">
+            {title}
+          </Typography>
+          <Typography level="body-sm">{format}</Typography>
+        </CardContent>
+        
+        <CardOverflow
+          variant="soft"
+          color="primary"
+          sx={{
+            px: 0.2,
+            writingMode: 'vertical-rl',
+            textAlign: 'center',
+            fontSize: 'xs',
+            fontWeight: 'xl',
+            letterSpacing: '1px',
+            textTransform: 'uppercase',
+            borderLeft: '1px solid',
+            borderColor: 'divider',
+          }}
+        >
+          {completionStatus}
+        </CardOverflow>
+      </Card>
+    </Box>
   );
 }
 
