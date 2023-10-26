@@ -47,8 +47,9 @@ function MediaCardNew({ currentMediaList, setCurrentMediaList }) {
           onSubmit={(event) => {
             event.preventDefault();
 
-            var alreadyExists = currentMediaList.find(
-              (backlogItem) => backlogItem.title == newBacklogItem.title
+            var alreadyExists = currentMediaList.find((backlogItem) =>
+              backlogItem.title == newBacklogItem.title
+              && backlogItem.format == newBacklogItem.format
             )
 
             if (alreadyExists) alert("This item is already in your log")
