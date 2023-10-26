@@ -14,6 +14,7 @@ import Radio from '@mui/joy/Radio';
 import RadioGroup from '@mui/joy/RadioGroup';
 import * as React from 'react';
 import PropTypes from 'prop-types';
+import axios from 'axios';
 
 // adds new backlog item and media card to display it
 function MediaCardNew({ backlogItems, setBacklogItems }) {
@@ -54,8 +55,13 @@ function MediaCardNew({ backlogItems, setBacklogItems }) {
 
             if (alreadyExists) alert("This item is already in your log")
             else {
-              setBacklogItems(backlogItems.concat(newBacklogItem));
-              setNewBacklogItem({...emptyBacklogItem})
+              console.log(newBacklogItem)
+              axios
+                .post('http://localhost:3001/backlogItems', newBacklogItem)
+                .then(response => {
+                  setBacklogItems(backlogItems.concat(response.data))
+                  setNewBacklogItem({...emptyBacklogItem})
+                })
             }
           }}
         >
