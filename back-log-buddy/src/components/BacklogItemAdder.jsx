@@ -16,7 +16,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 
 // adds new backlog item and media card to display it
-function MediaCardNew({ currentMediaList, setCurrentMediaList }) {
+function MediaCardNew({ backlogItems, setBacklogItems }) {
   const emptyBacklogItem = {
     title: '',
     format: 'Movie',
@@ -47,14 +47,14 @@ function MediaCardNew({ currentMediaList, setCurrentMediaList }) {
           onSubmit={(event) => {
             event.preventDefault();
 
-            var alreadyExists = currentMediaList.find((backlogItem) =>
+            var alreadyExists = backlogItems.find((backlogItem) =>
               backlogItem.title == newBacklogItem.title
               && backlogItem.format == newBacklogItem.format
             )
 
             if (alreadyExists) alert("This item is already in your log")
             else {
-              setCurrentMediaList(currentMediaList.concat(newBacklogItem));
+              setBacklogItems(backlogItems.concat(newBacklogItem));
               setNewBacklogItem({...emptyBacklogItem})
             }
           }}
@@ -114,8 +114,8 @@ function MediaCardNew({ currentMediaList, setCurrentMediaList }) {
 }
 
 MediaCardNew.propTypes = {
-  currentMediaList: PropTypes.array,
-  setCurrentMediaList: PropTypes.func,
+  backlogItems: PropTypes.array,
+  setBacklogItems: PropTypes.func,
   completionStatus: PropTypes.string
 }
 
