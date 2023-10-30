@@ -5,7 +5,6 @@ import axios from 'axios';
 
 export default function BacklogItemDelete({ id, setBacklogItems, backlogItems }) {
   const onDeleteClick = (id) => {
-    console.log(backlogItems.filter((backlogItem) => backlogItem.id != id))
     axios
       .delete(`http://localhost:3001/backlogItems/${id}`)
       .then(setBacklogItems(backlogItems.filter((backlogItem) => backlogItem.id != id)))

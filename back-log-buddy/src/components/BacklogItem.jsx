@@ -8,16 +8,23 @@ import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import TvIcon from '@mui/icons-material/Tv';
 import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
 import Box from '@mui/joy/Box';
+import Collapse from '@mui/material/Collapse';
+import { useState } from 'react';
 
 
 const MediaCard = ({ title, format, completionStatus}) => {
+  const [ collapse, setCollapse ] = useState(false)
+  function onClickCompletionStatus() {setCollapse(!collapse)}
+
   return (
     <Box sx={{ display: 'flex' }}>
+      <Box sx={{ width: 44 }}></Box>
       <Card
         orientation="horizontal"
         variant="outlined"
-        sx={{ width: 260 }}
+        sx={{ width: 172, height: 50 }}
       >
+
         <CardOverflow
           sx={{ 
             display: 'flex',
@@ -41,12 +48,13 @@ const MediaCard = ({ title, format, completionStatus}) => {
           </Typography>
           <Typography level="body-sm">{format}</Typography>
         </CardContent>
-        
+
         <CardOverflow
           variant="soft"
           color="primary"
+          id='test'
           sx={{
-            px: 0.2,
+            p: 0.2,
             writingMode: 'vertical-rl',
             textAlign: 'center',
             fontSize: 'xs',
@@ -55,11 +63,83 @@ const MediaCard = ({ title, format, completionStatus}) => {
             textTransform: 'uppercase',
             borderLeft: '1px solid',
             borderColor: 'divider',
+            width: 20
           }}
         >
-          {completionStatus}
+          <div onClick={onClickCompletionStatus}>{completionStatus}</div>
         </CardOverflow>
+        
       </Card>
+
+      {completionStatus != 'Backlog' && <Collapse orientation="horizontal" in={collapse} >
+        <Typography
+          variant="soft"
+          color="primary"
+          sx={{
+            p: 0,
+            writingMode: 'vertical-rl',
+            textAlign: 'center',
+            fontSize: 12,
+            fontWeight: 'xl',
+            letterSpacing: '1px',
+            textTransform: 'uppercase',
+            borderLeft: '1px solid',
+            borderColor: 'divider',
+            width: 20,
+            margin: 0,
+            height: 84
+          }}
+        >
+          Backlog
+        </Typography>
+      </Collapse>}
+
+      {completionStatus != 'Complete' && <Collapse orientation="horizontal" in={collapse} >
+        <Typography
+          variant="soft"
+          color="primary"
+          sx={{
+            p: 0,
+            writingMode: 'vertical-rl',
+            textAlign: 'center',
+            fontSize: 'xs',
+            fontWeight: 'xl',
+            letterSpacing: '1px',
+            textTransform: 'uppercase',
+            borderLeft: '1px solid',
+            borderColor: 'divider',
+            width: 20,
+            margin: 0,
+            height: 84
+          }}
+        >
+          Complete
+        </Typography>
+      </Collapse>}
+
+      {completionStatus != 'Playing' && <Collapse orientation="horizontal" in={collapse} >
+        <Typography
+          variant="soft"
+          color="primary"
+          sx={{
+            p: 0,
+            writingMode: 'vertical-rl',
+            textAlign: 'center',
+            fontSize: 'xs',
+            fontWeight: 'xl',
+            letterSpacing: '1px',
+            textTransform: 'uppercase',
+            borderLeft: '1px solid',
+            borderColor: 'divider',
+            width: 20,
+            margin: 0,
+            height: 84
+          }}
+        >
+          Playing
+        </Typography>
+      </Collapse>}
+
     </Box>
   );
 }
