@@ -10,7 +10,7 @@ import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
 import { Button, Divider } from '@mui/joy';
 
 export default function BacklogItemDelete({ id, setBacklogItems, backlogItems, title, format }) {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
 
   const onDeleteConfirmation = (id) => {
     setOpen(false)
@@ -21,7 +21,7 @@ export default function BacklogItemDelete({ id, setBacklogItems, backlogItems, t
 
   return(
     <>
-      <IconButton color='danger' onClick={() => setOpen(true)}>
+      <IconButton color='danger' onClick={() => setOpen(true)} size='sm'>
         <DeleteIcon />
       </IconButton>
 

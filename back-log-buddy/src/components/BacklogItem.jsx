@@ -9,9 +9,10 @@ import TvIcon from '@mui/icons-material/Tv';
 import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
 import { Box } from '@mui/material';
 import BacklogItemDelete from './BacklogItemDelete';
+import CompletionStatus from './CompletionStatus';
 
 
-const MediaCard = ({ title, format, completionStatus, id, setBacklogItems, backlogItems}) => {
+const BacklogItem = ({ title, format, completionStatus, id, setBacklogItems, backlogItems }) => {
   return (
     <Card sx={{ minHeight: '160px', width: 120 }}>
       <CardCover>
@@ -37,10 +38,13 @@ const MediaCard = ({ title, format, completionStatus, id, setBacklogItems, backl
             {title}
           </Typography>
         </Box>
-        <Box display='flex' justifyContent={'space-between'}>
-          <Typography level="title-sm" textColor="#fff" >
-            {completionStatus}
-          </Typography>
+        <Box display='flex' >
+          <CompletionStatus
+            completionStatus={completionStatus}
+            id={id}
+            setBacklogItems={setBacklogItems}
+            backlogItems={backlogItems}
+          />
           <BacklogItemDelete
             id={id}
             setBacklogItems={setBacklogItems}
@@ -54,7 +58,7 @@ const MediaCard = ({ title, format, completionStatus, id, setBacklogItems, backl
   );
 }
 
-MediaCard.propTypes = {
+BacklogItem.propTypes = {
   title: PropTypes.string,
   format: PropTypes.string,
   mediaInfo: PropTypes.string,
@@ -65,4 +69,4 @@ MediaCard.propTypes = {
   backlogItems: PropTypes.array
 }
 
-export default MediaCard
+export default BacklogItem

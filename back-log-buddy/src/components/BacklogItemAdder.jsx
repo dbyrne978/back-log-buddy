@@ -17,7 +17,7 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 
 // adds new backlog item and media card to display it
-function MediaCardNew({ backlogItems, setBacklogItems }) {
+function BacklogItemAdder({ backlogItems, setBacklogItems }) {
   const emptyBacklogItem = {
     title: '',
     format: 'Movie',
@@ -118,10 +118,10 @@ function MediaCardNew({ backlogItems, setBacklogItems }) {
   );
 }
 
-MediaCardNew.propTypes = {
+BacklogItemAdder.propTypes = {
   backlogItems: PropTypes.array,
   setBacklogItems: PropTypes.func,
   completionStatus: PropTypes.string
 }
 
-export default MediaCardNew
+export default BacklogItemAdder
