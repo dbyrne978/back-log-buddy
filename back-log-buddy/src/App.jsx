@@ -39,9 +39,8 @@ function App() {
         />
         {filteredItems.map(media => {
           return (
-            <Box key={media.id + '_box'}>
+            <Box key={media.id} display={'flex'} justifyContent={'center'}>
               <BacklogItem
-                key={media.id + '_item'}
                 title={media.title}
                 format={media.format}
                 completionStatus={media.completionStatus}
