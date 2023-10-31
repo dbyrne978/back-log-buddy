@@ -13,10 +13,16 @@
       "id": 5
     },
     {
-      "title": "aegdg",
+      "title": "bnlahblahg",
+      "format": "Book",
+      "completionStatus": "Playing",
+      "id": 7
+    },
+    {
+      "title": "zdjgndn",
       "format": "Game",
       "completionStatus": "Playing",
-      "id": 6
+      "id": 9
     }
   ]
 }

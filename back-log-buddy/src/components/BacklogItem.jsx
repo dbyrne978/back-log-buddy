@@ -8,9 +8,10 @@ import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import TvIcon from '@mui/icons-material/Tv';
 import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
 import { Box } from '@mui/material';
+import BacklogItemDelete from './BacklogItemDelete';
 
 
-const MediaCard = ({ title, format, completionStatus}) => {
+const MediaCard = ({ title, format, completionStatus, id, setBacklogItems, backlogItems}) => {
   return (
     <Card sx={{ minHeight: '160px', width: 120 }}>
       <CardCover>
@@ -27,6 +28,11 @@ const MediaCard = ({ title, format, completionStatus}) => {
         }}
       />
       <CardContent sx={{ justifyContent: 'flex-end' }}>
+        <BacklogItemDelete
+          id={id}
+          setBacklogItems={setBacklogItems}
+          backlogItems={backlogItems}
+        />
         <Box display='flex' >
           {format == 'Game' && <SportsEsportsIcon color='primary' />}
           {format == 'Book' && <AutoStoriesIcon color='primary'  />}
@@ -49,7 +55,10 @@ MediaCard.propTypes = {
   format: PropTypes.string,
   mediaInfo: PropTypes.string,
   mediaImage: PropTypes.string,
-  completionStatus: PropTypes.string
+  completionStatus: PropTypes.string,
+  id: PropTypes.number,
+  setBacklogItems: PropTypes.func,
+  backlogItems: PropTypes.array
 }
 
 export default MediaCard

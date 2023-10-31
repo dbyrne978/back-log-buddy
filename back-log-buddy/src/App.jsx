@@ -4,7 +4,6 @@ import BacklogItemAdder from './components/BacklogItemAdder.jsx'
 import FormatFilter from './components/FormatFilter.jsx'
 import * as React from 'react';
 import axios from 'axios';
-import BacklogItemDelete from './components/BacklogItemDelete.jsx'
 import Box from '@mui/joy/Box';
 import {
   experimental_extendTheme as materialExtendTheme,
@@ -38,7 +37,6 @@ function App() {
           formatFilter={formatFilter}
           setFormatFilter={setFormatFilter}
         />
-
         {filteredItems.map(media => {
           return (
             <Box key={media.id + '_box'}>
@@ -47,9 +45,6 @@ function App() {
                 title={media.title}
                 format={media.format}
                 completionStatus={media.completionStatus}
-              />
-              <BacklogItemDelete
-                key={media.id + '_delete'}
                 id={media.id}
                 setBacklogItems={setBacklogItems}
                 backlogItems={backlogItems}
@@ -57,7 +52,6 @@ function App() {
             </Box>
           );
         })}
-
         <BacklogItemAdder
           backlogItems={backlogItems}
           setBacklogItems={setBacklogItems}
