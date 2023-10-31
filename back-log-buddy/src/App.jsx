@@ -3,7 +3,6 @@ import BacklogItem from './components/BacklogItem.jsx'
 import BacklogItemAdder from './components/BacklogItemAdder.jsx'
 import FormatFilter from './components/FormatFilter.jsx'
 import * as React from 'react';
-import axios from 'axios';
 import Box from '@mui/joy/Box';
 import {
   experimental_extendTheme as materialExtendTheme,
@@ -11,6 +10,7 @@ import {
   THEME_ID as MATERIAL_THEME_ID,
 } from '@mui/material/styles';
 import { CssVarsProvider as JoyCssVarsProvider } from '@mui/joy/styles';
+import backlogItemsService from './services/backlogItems'
 
 const materialTheme = materialExtendTheme();
 
@@ -19,10 +19,10 @@ function App() {
   const [formatFilter, setFormatFilter] = React.useState(null)
 
   React.useEffect(() => {
-    axios
-      .get('http://localhost:3001/backlogItems')
-      .then(response => {
-        setBacklogItems(response.data)
+    backlogItemsService
+      .getAll()
+      .then(initialBacklogItems => {
+        setBacklogItems(initialBacklogItems)
       })
   }, [])
 

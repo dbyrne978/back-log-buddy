@@ -1,21 +1,21 @@
 import DeleteIcon from '@mui/icons-material/Delete';
 import IconButton from '@mui/joy/IconButton';
 import PropTypes from 'prop-types';
-import axios from 'axios';
 import { useState } from 'react';
 import { DialogTitle, DialogContent, DialogActions } from '@mui/material';
 import Modal from '@mui/joy/Modal';
 import ModalDialog from '@mui/joy/ModalDialog';
 import WarningRoundedIcon from '@mui/icons-material/WarningRounded';
 import { Button, Divider } from '@mui/joy';
+import backlogItemsService from '../services/backlogItems'
 
 export default function BacklogItemDelete({ id, setBacklogItems, backlogItems, title, format }) {
   const [open, setOpen] = useState(false)
 
   const onDeleteConfirmation = (id) => {
     setOpen(false)
-    axios
-      .delete(`http://localhost:3001/backlogItems/${id}`)
+    backlogItemsService
+      .deleteItem(id)
       .then(setBacklogItems(backlogItems.filter((backlogItem) => backlogItem.id != id)))
   }
 

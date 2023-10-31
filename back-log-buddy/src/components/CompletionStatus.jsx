@@ -5,20 +5,17 @@ import { useState } from 'react';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
 import TaskAltIcon from '@mui/icons-material/TaskAlt';
-import axios from 'axios';
+import backlogItemsService from '../services/backlogItems'
 
 export default function CompletionStatus({ completionStatus, id, setBacklogItems, backlogItems }) {
   const [groupValue, setGroupValue] = useState(completionStatus)
   let currentBacklogItem = backlogItems.find((backlogItem) => backlogItem.id == id)
 
   const onChange = (event, newCompletionStatus) => {
-    axios
-      .put(
-        `http://localhost:3001/backlogItems/${id}`,
-        {...currentBacklogItem, completionStatus: newCompletionStatus}
-      )
-      .then(response => {
-        setBacklogItems(backlogItems.map(item => item.id !== id ? item : response.data));
+    backlogItemsService
+      .update(id, {...currentBacklogItem, completionStatus: newCompletionStatus})
+      .then(returnedItem => {
+        setBacklogItems(backlogItems.map(item => item.id !== id ? item : returnedItem));
         setGroupValue(newCompletionStatus)
       })
   }
