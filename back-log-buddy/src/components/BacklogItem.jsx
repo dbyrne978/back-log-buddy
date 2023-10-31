@@ -2,145 +2,45 @@ import Card from '@mui/joy/Card';
 import Typography from '@mui/joy/Typography';
 import PropTypes from 'prop-types';
 import CardContent from '@mui/joy/CardContent';
-import CardOverflow from '@mui/joy/CardOverflow';
+import { CardCover } from '@mui/joy';
 import SportsEsportsIcon from '@mui/icons-material/SportsEsports';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import TvIcon from '@mui/icons-material/Tv';
 import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
-import Box from '@mui/joy/Box';
-import Collapse from '@mui/material/Collapse';
-import { useState } from 'react';
+import { Box } from '@mui/material';
 
 
 const MediaCard = ({ title, format, completionStatus}) => {
-  const [ collapse, setCollapse ] = useState(false)
-  function onClickCompletionStatus() {setCollapse(!collapse)}
-
   return (
-    <Box sx={{ display: 'flex' }}>
-      <Box sx={{ width: 44 }}></Box>
-      <Card
-        orientation="horizontal"
-        variant="outlined"
-        sx={{ width: 172, height: 50 }}
-      >
-
-        <CardOverflow
-          sx={{ 
-            display: 'flex',
-            alignItems: 'center'
-          }}
-        >
-          {format == 'Game' && <SportsEsportsIcon />}
-          {format == 'Book' && <AutoStoriesIcon />}
-          {format == 'TV Show' && <TvIcon />}
-          {format == 'Movie' && <LocalMoviesIcon />}
-        </CardOverflow>
-
-        <CardContent
-          sx={{ 
-            display: 'flex',
-            justifyContent: 'center'
-          }}
-        >
-          <Typography fontWeight="md" textColor="success.plainColor">
+    <Card sx={{ minHeight: '160px', width: 120 }}>
+      <CardCover>
+        <img
+          src="./placeholder-media-image.bmp"
+          loading="lazy"
+          alt=""
+        />
+      </CardCover>
+      <CardCover
+        sx={{
+          background:
+            'linear-gradient(to top, rgba(0,0,0,0.4), rgba(0,0,0,0) 200px), linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0) 300px)',
+        }}
+      />
+      <CardContent sx={{ justifyContent: 'flex-end' }}>
+        <Box display='flex' >
+          {format == 'Game' && <SportsEsportsIcon color='primary' />}
+          {format == 'Book' && <AutoStoriesIcon color='primary'  />}
+          {format == 'TV Show' && <TvIcon color='primary'  />}
+          {format == 'Movie' && <LocalMoviesIcon color='primary'  />}
+          <Typography level="title-md" textColor="#fff">
             {title}
           </Typography>
-          <Typography level="body-sm">{format}</Typography>
-        </CardContent>
-
-        <CardOverflow
-          variant="soft"
-          color="primary"
-          id='test'
-          sx={{
-            p: 0.2,
-            writingMode: 'vertical-rl',
-            textAlign: 'center',
-            fontSize: 'xs',
-            fontWeight: 'xl',
-            letterSpacing: '1px',
-            textTransform: 'uppercase',
-            borderLeft: '1px solid',
-            borderColor: 'divider',
-            width: 20
-          }}
-        >
-          <div onClick={onClickCompletionStatus}>{completionStatus}</div>
-        </CardOverflow>
-        
-      </Card>
-
-      {completionStatus != 'Backlog' && <Collapse orientation="horizontal" in={collapse} >
-        <Typography
-          variant="soft"
-          color="primary"
-          sx={{
-            p: 0,
-            writingMode: 'vertical-rl',
-            textAlign: 'center',
-            fontSize: 12,
-            fontWeight: 'xl',
-            letterSpacing: '1px',
-            textTransform: 'uppercase',
-            borderLeft: '1px solid',
-            borderColor: 'divider',
-            width: 20,
-            margin: 0,
-            height: 84
-          }}
-        >
-          Backlog
-        </Typography>
-      </Collapse>}
-
-      {completionStatus != 'Complete' && <Collapse orientation="horizontal" in={collapse} >
-        <Typography
-          variant="soft"
-          color="primary"
-          sx={{
-            p: 0,
-            writingMode: 'vertical-rl',
-            textAlign: 'center',
-            fontSize: 'xs',
-            fontWeight: 'xl',
-            letterSpacing: '1px',
-            textTransform: 'uppercase',
-            borderLeft: '1px solid',
-            borderColor: 'divider',
-            width: 20,
-            margin: 0,
-            height: 84
-          }}
-        >
-          Complete
-        </Typography>
-      </Collapse>}
-
-      {completionStatus != 'Playing' && <Collapse orientation="horizontal" in={collapse} >
-        <Typography
-          variant="soft"
-          color="primary"
-          sx={{
-            p: 0,
-            writingMode: 'vertical-rl',
-            textAlign: 'center',
-            fontSize: 'xs',
-            fontWeight: 'xl',
-            letterSpacing: '1px',
-            textTransform: 'uppercase',
-            borderLeft: '1px solid',
-            borderColor: 'divider',
-            width: 20,
-            margin: 0,
-            height: 84
-          }}
-        >
-          Playing
-        </Typography>
-      </Collapse>}
-
-    </Box>
+        </Box>
+        <Typography level="title-sm" textColor="#fff">
+            {completionStatus}
+          </Typography>
+      </CardContent>
+    </Card>
   );
 }
 
