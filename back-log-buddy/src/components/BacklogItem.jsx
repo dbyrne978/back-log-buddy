@@ -28,11 +28,6 @@ const MediaCard = ({ title, format, completionStatus, id, setBacklogItems, backl
         }}
       />
       <CardContent sx={{ justifyContent: 'flex-end' }}>
-        <BacklogItemDelete
-          id={id}
-          setBacklogItems={setBacklogItems}
-          backlogItems={backlogItems}
-        />
         <Box display='flex' >
           {format == 'Game' && <SportsEsportsIcon color='primary' />}
           {format == 'Book' && <AutoStoriesIcon color='primary'  />}
@@ -42,9 +37,16 @@ const MediaCard = ({ title, format, completionStatus, id, setBacklogItems, backl
             {title}
           </Typography>
         </Box>
-        <Typography level="title-sm" textColor="#fff">
+        <Box display='flex' justifyContent={'space-between'}>
+          <Typography level="title-sm" textColor="#fff" >
             {completionStatus}
           </Typography>
+          <BacklogItemDelete
+            id={id}
+            setBacklogItems={setBacklogItems}
+            backlogItems={backlogItems}
+          />
+        </Box>
       </CardContent>
     </Card>
   );
