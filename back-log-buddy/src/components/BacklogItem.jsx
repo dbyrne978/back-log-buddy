@@ -45,6 +45,8 @@ const MediaCard = ({ title, format, completionStatus, id, setBacklogItems, backl
             id={id}
             setBacklogItems={setBacklogItems}
             backlogItems={backlogItems}
+            title={title}
+            format={format}
           />
         </Box>
       </CardContent>
