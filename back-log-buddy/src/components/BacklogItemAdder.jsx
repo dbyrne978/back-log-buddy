@@ -100,9 +100,9 @@ function MediaCardNew({ backlogItems, setBacklogItems }) {
                 setNewBacklogItem({...newBacklogItem, completionStatus: event.target.value})
               }
             >
-              <Radio value="Backlog" label="Backlog" />
-              <Radio value="Complete" label="Complete" />
-              <Radio value="Playing" label="Playing" />
+              <Radio value="Backlog" label="Backlog" size="sm" />
+              <Radio value="Complete" label="Complete" size="sm" />
+              <Radio value="Playing" label="Playing" size="sm" />
             </RadioGroup>
           </FormControl>
 
