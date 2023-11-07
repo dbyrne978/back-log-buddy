@@ -16,14 +16,11 @@ BacklogItem component:
   Color changes based on CompletionStatus (green = current, red = backlog, grey = complete)
 
 TODO:
-form validation for new backlog item
-  no duplicate keys
-  no empty title
+Create Modal instead of alert when duplicate title/format is added
 add color change to CompletionStatus
-add update to CompletionStatus
-add edit to title/format (with validation)
 hide BacklogItemAdder
 add drag and drop
 add columns
   columns merge if on smaller screen
 add floating labels to title and format in BacklogItemAdder
+add catches to the services
