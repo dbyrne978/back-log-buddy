@@ -64,7 +64,7 @@ BacklogItem.propTypes = {
   mediaInfo: PropTypes.string,
   mediaImage: PropTypes.string,
   completionStatus: PropTypes.string,
-  id: PropTypes.number,
+  id: PropTypes.string,
   setBacklogItems: PropTypes.func,
   backlogItems: PropTypes.array
 }

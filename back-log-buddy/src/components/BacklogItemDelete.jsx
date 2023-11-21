@@ -50,7 +50,7 @@ export default function BacklogItemDelete({ id, setBacklogItems, backlogItems, t
 }
 
 BacklogItemDelete.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.string,
   setBacklogItems: PropTypes.func,
   backlogItems: PropTypes.array,
   title: PropTypes.string,

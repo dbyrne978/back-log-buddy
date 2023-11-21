@@ -48,7 +48,7 @@ export default function CompletionStatus({ completionStatus, id, setBacklogItems
 
 CompletionStatus.propTypes = {
   completionStatus: PropTypes.string,
-  id: PropTypes.number,
+  id: PropTypes.string,
   setBacklogItems: PropTypes.func,
   backlogItems: PropTypes.array
 }
