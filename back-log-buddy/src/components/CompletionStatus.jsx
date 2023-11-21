@@ -15,7 +15,7 @@ export default function CompletionStatus({ completionStatus, id, setBacklogItems
     backlogItemsService
       .update(id, {...currentBacklogItem, completionStatus: newCompletionStatus})
       .then(returnedItem => {
-        setBacklogItems(backlogItems.map(item => item.id !== id ? item : returnedItem));
+        setBacklogItems(backlogItems.map(item => item.id !== id ? item : returnedItem))
         setGroupValue(newCompletionStatus)
       })
   }
@@ -25,7 +25,7 @@ export default function CompletionStatus({ completionStatus, id, setBacklogItems
       size='sm'
       variant="solid"
       value={groupValue}
-      onChange={(event, newCompletionStatus) => onChange(event, newCompletionStatus)}
+      onChange={(event, newCompletionStatus) => onChange(event, newCompletionStatus || groupValue)}
       aria-label="figma button group"
       sx={{
         '--ButtonGroup-radius': '3px',
