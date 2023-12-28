@@ -72,7 +72,7 @@ function App() {
   return (
     <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
       <JoyCssVarsProvider>
-        <Header/>
+        <Header user={user} key={user} />
         {user === null ?
           loginForm() :
           backlogComponents()

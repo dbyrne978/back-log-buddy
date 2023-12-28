@@ -4,8 +4,9 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import PersonIcon from '@mui/icons-material/Person';
+import PropTypes from 'prop-types';
 
-export default function ButtonAppBar() {
+export default function ButtonAppBar({ user }) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
@@ -15,7 +16,10 @@ export default function ButtonAppBar() {
           </Typography>
 
           <Typography variant="h8" component="div">
-            username
+            {user ?
+              user.username :
+              'Please login'
+            }
           </Typography>
 
           <PersonIcon />
@@ -26,4 +30,8 @@ export default function ButtonAppBar() {
       <Toolbar />
     </Box>
   );
+}
+
+ButtonAppBar.propTypes = {
+  user: PropTypes.object,
 }
