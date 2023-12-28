@@ -3,6 +3,7 @@ import BacklogItem from './components/BacklogItem.jsx'
 import BacklogItemAdder from './components/BacklogItemAdder.jsx'
 import FormatFilter from './components/FormatFilter.jsx'
 import Login from './components/Login.jsx'
+import Header from './components/Header.jsx'
 import * as React from 'react';
 import Box from '@mui/joy/Box';
 import {
@@ -71,6 +72,7 @@ function App() {
   return (
     <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
       <JoyCssVarsProvider>
+        <Header/>
         {user === null ?
           loginForm() :
           backlogComponents()

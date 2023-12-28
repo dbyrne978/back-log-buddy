@@ -26,3 +26,6 @@ add floating labels to title and format in BacklogItemAdder
 add catches to the services
 
 add user creation
+add hamburger menu to header
+add logout to header hamburger
+add logout to user icon in header
