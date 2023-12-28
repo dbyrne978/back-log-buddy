@@ -25,6 +25,9 @@ const Login = ({ user, setUser }) => {
         username, password,
       })
 
+      window.localStorage.setItem(
+        'loggedBacklogBuddyUser', JSON.stringify(user)
+      ) 
       backlogItemsService.setToken(user.token)
       setUser(user)
       setUsername('')

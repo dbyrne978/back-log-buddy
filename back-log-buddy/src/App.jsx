@@ -29,6 +29,15 @@ function App() {
       })
   }, [])
 
+  React.useEffect(() => {
+    const loggedUserJSON = window.localStorage.getItem('loggedBacklogBuddyUser')
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON)
+      setUser(user)
+      backlogItemsService.setToken(user.token)
+    }
+  }, [])
+
   const filteredItems = ((formatFilter == 'Show All') || (formatFilter === null))
     ? backlogItems
     : backlogItems.filter(media => media.format == formatFilter)
