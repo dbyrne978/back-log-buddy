@@ -3,8 +3,8 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
-import PersonIcon from '@mui/icons-material/Person';
 import PropTypes from 'prop-types';
+import UserDropdown from './UserDropdown';
 
 export default function ButtonAppBar({ user }) {
   return (
@@ -22,7 +22,7 @@ export default function ButtonAppBar({ user }) {
             }
           </Typography>
 
-          <PersonIcon />
+          <UserDropdown/>
         </Toolbar>
       </AppBar>
 
