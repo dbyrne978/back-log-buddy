@@ -32,17 +32,13 @@ function App() {
     ? backlogItems
     : backlogItems.filter(media => media.format == formatFilter)
 
-  return (
-    <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
-      <JoyCssVarsProvider>
-        <Login
-          user={user}
-          setUser={setUser}
-        />
-        <FormatFilter
+  const backlogComponents = () => (
+    <div>
+      <FormatFilter
           formatFilter={formatFilter}
           setFormatFilter={setFormatFilter}
         />
+
         {filteredItems.map(media => {
           return (
             <Box key={media.id} display={'flex'} justifyContent={'center'}>
@@ -57,11 +53,28 @@ function App() {
             </Box>
           );
         })}
+
         <BacklogItemAdder
           backlogItems={backlogItems}
           setBacklogItems={setBacklogItems}
         />
+    </div>
+  )
 
+  const loginForm = () => (
+    <Login
+      user={user}
+      setUser={setUser}
+    />
+  )
+
+  return (
+    <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
+      <JoyCssVarsProvider>
+        {user === null ?
+          loginForm() :
+          backlogComponents()
+        }
       </JoyCssVarsProvider>
     </MaterialCssVarsProvider>
   )
