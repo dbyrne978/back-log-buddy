@@ -10,20 +10,27 @@ import CardContent from '@mui/joy/CardContent';
 import CardActions from '@mui/joy/CardActions';
 import * as React from 'react';
 import PropTypes from 'prop-types';
-import backlogItemsService from '../services/backlogItems'
+import loginService from '../services/login';
 
-const Login = ({ username, setUsername, password, setPassword }) => {
-  const handleLogin = (event) => {
+const Login = ({ user, setUser }) => {
+  const [username, setUsername] = React.useState('')
+  const [password, setPassword] = React.useState('')
+
+  const handleLogin = async (event) => {
     event.preventDefault();
 
-    if (true) alert('logging in with: '+username+' '+password)
-    else {
-      backlogItemsService
-        .create(newBacklogItem)
-        .then(returnedBacklogItem => {
-          setBacklogItems(backlogItems.concat(returnedBacklogItem))
-          setNewBacklogItem({...emptyBacklogItem})
-        })
+    try {
+      const user = await loginService.login({
+        username, password,
+      })
+      setUser(user)
+      setUsername('')
+      setPassword('')
+    } catch (exception) {
+      setErrorMessage('Username or password does not exist')
+      setTimeout(() => {
+        setErrorMessage('timeout')
+      }, 5000)
     }
   }
 
@@ -82,10 +89,8 @@ const Login = ({ username, setUsername, password, setPassword }) => {
 }
 
 Login.propTypes = {
-  username: PropTypes.string,
-  setUsername: PropTypes.func,
-  password: PropTypes.string,
-  setPassword: PropTypes.func,
+  user: PropTypes.object,
+  setUser: PropTypes.func,
 }
 
 export default Login

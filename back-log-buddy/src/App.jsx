@@ -18,8 +18,7 @@ const materialTheme = materialExtendTheme();
 function App() {
   const [backlogItems, setBacklogItems] = React.useState([])
   const [formatFilter, setFormatFilter] = React.useState(null)
-  const [username, setUsername] = React.useState('') 
-  const [password, setPassword] = React.useState('') 
+  const [user, setUser] = React.useState(null)
 
   React.useEffect(() => {
     backlogItemsService
@@ -37,10 +36,8 @@ function App() {
     <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
       <JoyCssVarsProvider>
         <Login
-          username={username}
-          setUsername={setUsername}
-          password={password}
-          setPassword={setPassword}
+          user={user}
+          setUser={setUser}
         />
         <FormatFilter
           formatFilter={formatFilter}
