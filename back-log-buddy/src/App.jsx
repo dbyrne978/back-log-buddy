@@ -2,6 +2,7 @@ import './App.css'
 import BacklogItem from './components/BacklogItem.jsx'
 import BacklogItemAdder from './components/BacklogItemAdder.jsx'
 import FormatFilter from './components/FormatFilter.jsx'
+import Login from './components/Login.jsx'
 import * as React from 'react';
 import Box from '@mui/joy/Box';
 import {
@@ -17,6 +18,8 @@ const materialTheme = materialExtendTheme();
 function App() {
   const [backlogItems, setBacklogItems] = React.useState([])
   const [formatFilter, setFormatFilter] = React.useState(null)
+  const [username, setUsername] = React.useState('') 
+  const [password, setPassword] = React.useState('') 
 
   React.useEffect(() => {
     backlogItemsService
@@ -33,6 +36,12 @@ function App() {
   return (
     <MaterialCssVarsProvider theme={{ [MATERIAL_THEME_ID]: materialTheme }}>
       <JoyCssVarsProvider>
+        <Login
+          username={username}
+          setUsername={setUsername}
+          password={password}
+          setPassword={setPassword}
+        />
         <FormatFilter
           formatFilter={formatFilter}
           setFormatFilter={setFormatFilter}
