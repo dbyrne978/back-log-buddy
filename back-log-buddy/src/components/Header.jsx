@@ -12,7 +12,7 @@ export default function ButtonAppBar({ user }) {
       <AppBar position="fixed">
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'left' }}>
-            News
+            Backlog Buddy
           </Typography>
 
           <Typography variant="h8" component="div">
