@@ -11,6 +11,7 @@ import CardActions from '@mui/joy/CardActions';
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import loginService from '../services/login';
+import backlogItemsService from '../services/backlogItems';
 
 const Login = ({ user, setUser }) => {
   const [username, setUsername] = React.useState('')
@@ -23,6 +24,8 @@ const Login = ({ user, setUser }) => {
       const user = await loginService.login({
         username, password,
       })
+
+      backlogItemsService.setToken(user.token)
       setUser(user)
       setUsername('')
       setPassword('')
