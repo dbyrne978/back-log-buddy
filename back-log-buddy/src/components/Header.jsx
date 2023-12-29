@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import PropTypes from 'prop-types';
 import UserDropdown from './UserDropdown';
 
-export default function ButtonAppBar({ user }) {
+export default function ButtonAppBar({ user, setUser }) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="fixed">
@@ -22,7 +22,7 @@ export default function ButtonAppBar({ user }) {
             }
           </Typography>
 
-          <UserDropdown/>
+          <UserDropdown setUser={setUser} />
         </Toolbar>
       </AppBar>
 
@@ -34,4 +34,5 @@ export default function ButtonAppBar({ user }) {
 
 ButtonAppBar.propTypes = {
   user: PropTypes.object,
+  setUser: PropTypes.func,
 }

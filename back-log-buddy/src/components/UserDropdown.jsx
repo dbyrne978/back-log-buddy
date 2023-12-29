@@ -2,11 +2,18 @@ import * as React from 'react';
 import IconButton from '@mui/joy/IconButton';
 import AccountCircleRoundedIcon from '@mui/icons-material/AccountCircleRounded';
 import Popover from '@mui/material/Popover';
-import { Button } from '@mui/joy';
-import { Typography } from '@mui/joy';
+import LogoutIcon from '@mui/icons-material/Logout';
+import List from '@mui/joy/List';
+import ListItem from '@mui/joy/ListItem';
+import ListItemDecorator from '@mui/joy/ListItemDecorator';
+import ListItemButton from '@mui/joy/ListItemButton';
+import LogoutModal from './LogoutModal';
+import PropTypes from 'prop-types';
 
-export default function UserDropdown() {
+
+export default function UserDropdown({ setUser }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [logoutModalOpen, setLogoutModalOpen] = React.useState(false)
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -14,6 +21,10 @@ export default function UserDropdown() {
 
   const handleClose = () => {
     setAnchorEl(null);
+  };
+
+  const handleLogout = () => {
+    setLogoutModalOpen(true)
   };
 
   const open = Boolean(anchorEl);
@@ -46,8 +57,24 @@ export default function UserDropdown() {
           horizontal: 'right',
         }}
       >
-        <Typography sx={{ p: 1 }}>Logout</Typography>
+        <List>
+          <ListItem>
+           <ListItemButton onClick={handleLogout}>
+             <ListItemDecorator><LogoutIcon /></ListItemDecorator>
+             Logout
+           </ListItemButton>
+           <LogoutModal
+            logoutModalOpen={logoutModalOpen}
+            setLogoutModalOpen={setLogoutModalOpen}
+            setUser={setUser}
+          />
+          </ListItem>
+        </List>
       </Popover>
     </div>
   );
+}
+
+UserDropdown.propTypes = {
+  setUser: PropTypes.func,
 }
