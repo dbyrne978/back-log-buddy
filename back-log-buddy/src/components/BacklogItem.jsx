@@ -12,7 +12,7 @@ import BacklogItemDelete from './BacklogItemDelete';
 import CompletionStatus from './CompletionStatus';
 
 
-const BacklogItem = ({ title, format, completionStatus, id, setBacklogItems, backlogItems }) => {
+const BacklogItem = ({ username, title, format, completionStatus, id, setBacklogItems, backlogItems }) => {
   return (
     <Card sx={{ minHeight: '160px', width: 120 }}>
       <CardCover>
@@ -29,6 +29,9 @@ const BacklogItem = ({ title, format, completionStatus, id, setBacklogItems, bac
         }}
       />
       <CardContent sx={{ justifyContent: 'flex-end' }}>
+        <Typography level="title-md" textColor="#fff">
+          {username}
+        </Typography>
         <Box display='flex' >
           {format == 'Game' && <SportsEsportsIcon color='primary' />}
           {format == 'Book' && <AutoStoriesIcon color='primary'  />}

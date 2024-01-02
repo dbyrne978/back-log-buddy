@@ -40,7 +40,7 @@ function App() {
 
   const filteredItems = ((formatFilter == 'Show All') || (formatFilter === null))
     ? backlogItems
-    : backlogItems.filter(media => media.format == formatFilter)
+    : backlogItems.filter(backlogItem => backlogItem.format == formatFilter)
 
   const backlogComponents = () => (
     <div>
@@ -54,14 +54,15 @@ function App() {
         setBacklogItems={setBacklogItems}
       />
 
-      {filteredItems.map(media => {
+      {filteredItems.map(backlogItem => {
         return (
-          <Box key={media.id} display={'flex'} justifyContent={'center'}>
+          <Box key={backlogItem.id} display={'flex'} justifyContent={'center'}>
             <BacklogItem
-              title={media.title}
-              format={media.format}
-              completionStatus={media.completionStatus}
-              id={media.id}
+              username={backlogItem.user.username}
+              title={backlogItem.title}
+              format={backlogItem.format}
+              completionStatus={backlogItem.completionStatus}
+              id={backlogItem.id}
               setBacklogItems={setBacklogItems}
               backlogItems={backlogItems}
             />
