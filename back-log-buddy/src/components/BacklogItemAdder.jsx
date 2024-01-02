@@ -24,97 +24,116 @@ function BacklogItemAdder({ backlogItems, setBacklogItems }) {
     completionStatus: 'Backlog',
   }
 
+  const [showAdder, setShowAdder] = React.useState(false)
   const [newBacklogItem, setNewBacklogItem] = React.useState({...emptyBacklogItem})
 
+  const adder = () => (
+    <div>
+      <Card
+        variant="outlined"
+        sx={{
+          maxHeight: 'max-content',
+          width: 260,
+          mx: 'auto',
+          overflow: 'auto',
+          resize: 'horizontal',
+        }}
+      >
+        <Typography level="title-lg" startDecorator={<PlaylistAddIcon />}>
+          Add new backlog item
+        </Typography>
+
+        <Divider inset="none" />
+
+        <CardContent>
+          <form
+            onSubmit={(event) => {
+              event.preventDefault();
+
+              var alreadyExists = backlogItems.find((backlogItem) =>
+                backlogItem.title == newBacklogItem.title
+                && backlogItem.format == newBacklogItem.format
+              )
+
+              if (alreadyExists) alert("This item is already in your log")
+              else {
+                backlogItemsService
+                  .create(newBacklogItem)
+                  .then(returnedBacklogItem => {
+                    setBacklogItems(backlogItems.concat(returnedBacklogItem))
+                    setNewBacklogItem({...emptyBacklogItem})
+                    setShowAdder(false)
+                  })
+              }
+            }}
+          >
+            <FormControl>
+              <FormLabel>Title</FormLabel>
+              <Input
+                required
+                value={newBacklogItem.title}
+                onChange={(event) =>
+                  setNewBacklogItem({...newBacklogItem, title: event.target.value})
+                }
+              />
+            </FormControl>
+
+            <FormControl>
+              <FormLabel>Format</FormLabel>
+              <Select
+                placeholder="Choose one…"
+                value={newBacklogItem.format}
+                onChange={(event, newValue) =>
+                  setNewBacklogItem({...newBacklogItem, format: newValue})
+                }
+              >
+                <Option value='Movie'>Movie</Option>
+                <Option value='TV Show'>TV Show</Option>
+                <Option value='Game'>Game</Option>
+                <Option value='Book'>Book</Option>
+              </Select>
+            </FormControl>
+
+            <FormControl>
+              <RadioGroup
+                name="completion-status-radio-group"
+                orientation='horizontal'
+                value={newBacklogItem.completionStatus}
+                onChange={(event) =>
+                  setNewBacklogItem({...newBacklogItem, completionStatus: event.target.value})
+                }
+              >
+                <Radio value="Backlog" label="Backlog" size="sm" />
+                <Radio value="Complete" label="Complete" size="sm" />
+                <Radio value="Playing" label="Playing" size="sm" />
+              </RadioGroup>
+            </FormControl>
+
+            <CardActions>
+              <Button variant="solid" color="primary" type='submit'>
+                Add Backlog Item
+              </Button>
+            </CardActions>
+
+          </form>
+        </CardContent>
+      </Card>
+    </div>
+  )
+
+  const askForAdder = () => (
+    <Button variant="solid" color="primary" onClick={() => setShowAdder(true)}>
+      Add New Backlog Item
+    </Button>
+  )
+
   return (
-    <Card
-      variant="outlined"
-      sx={{
-        maxHeight: 'max-content',
-        width: 260,
-        mx: 'auto',
-        overflow: 'auto',
-        resize: 'horizontal',
-      }}
-    >
-      <Typography level="title-lg" startDecorator={<PlaylistAddIcon />}>
-        Add new backlog item
-      </Typography>
-
-      <Divider inset="none" />
-
-      <CardContent>
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-
-            var alreadyExists = backlogItems.find((backlogItem) =>
-              backlogItem.title == newBacklogItem.title
-              && backlogItem.format == newBacklogItem.format
-            )
-
-            if (alreadyExists) alert("This item is already in your log")
-            else {
-              backlogItemsService
-                .create(newBacklogItem)
-                .then(returnedBacklogItem => {
-                  setBacklogItems(backlogItems.concat(returnedBacklogItem))
-                  setNewBacklogItem({...emptyBacklogItem})
-                })
-            }
-          }}
-        >
-          <FormControl>
-            <FormLabel>Title</FormLabel>
-            <Input
-              required
-              value={newBacklogItem.title}
-              onChange={(event) =>
-                setNewBacklogItem({...newBacklogItem, title: event.target.value})
-              }
-            />
-          </FormControl>
-
-          <FormControl>
-            <FormLabel>Format</FormLabel>
-            <Select
-              placeholder="Choose one…"
-              value={newBacklogItem.format}
-              onChange={(event, newValue) =>
-                setNewBacklogItem({...newBacklogItem, format: newValue})
-              }
-            >
-              <Option value='Movie'>Movie</Option>
-              <Option value='TV Show'>TV Show</Option>
-              <Option value='Game'>Game</Option>
-              <Option value='Book'>Book</Option>
-            </Select>
-          </FormControl>
-
-          <FormControl>
-            <RadioGroup
-              name="completion-status-radio-group"
-              orientation='horizontal'
-              value={newBacklogItem.completionStatus}
-              onChange={(event) =>
-                setNewBacklogItem({...newBacklogItem, completionStatus: event.target.value})
-              }
-            >
-              <Radio value="Backlog" label="Backlog" size="sm" />
-              <Radio value="Complete" label="Complete" size="sm" />
-              <Radio value="Playing" label="Playing" size="sm" />
-            </RadioGroup>
-          </FormControl>
-
-          <CardActions>
-            <Button variant="solid" color="primary" type='submit'>
-              Add Backlog Item
-            </Button>
-          </CardActions>
-
-        </form>
-      </CardContent>
-    </Card>
+    <div>
+      {showAdder === true ?
+        adder() :
+        askForAdder()
+      }
+    </div>
   );
 }
 

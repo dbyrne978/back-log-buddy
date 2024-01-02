@@ -45,29 +45,29 @@ function App() {
   const backlogComponents = () => (
     <div>
       <FormatFilter
-          formatFilter={formatFilter}
-          setFormatFilter={setFormatFilter}
-        />
+        formatFilter={formatFilter}
+        setFormatFilter={setFormatFilter}
+      />
+        
+      <BacklogItemAdder
+        backlogItems={backlogItems}
+        setBacklogItems={setBacklogItems}
+      />
 
-        {filteredItems.map(media => {
-          return (
-            <Box key={media.id} display={'flex'} justifyContent={'center'}>
-              <BacklogItem
-                title={media.title}
-                format={media.format}
-                completionStatus={media.completionStatus}
-                id={media.id}
-                setBacklogItems={setBacklogItems}
-                backlogItems={backlogItems}
-              />
-            </Box>
-          );
-        })}
-
-        <BacklogItemAdder
-          backlogItems={backlogItems}
-          setBacklogItems={setBacklogItems}
-        />
+      {filteredItems.map(media => {
+        return (
+          <Box key={media.id} display={'flex'} justifyContent={'center'}>
+            <BacklogItem
+              title={media.title}
+              format={media.format}
+              completionStatus={media.completionStatus}
+              id={media.id}
+              setBacklogItems={setBacklogItems}
+              backlogItems={backlogItems}
+            />
+          </Box>
+        );
+      })}
     </div>
   )
 
