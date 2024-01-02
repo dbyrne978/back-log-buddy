@@ -10,8 +10,7 @@ import CardContent from '@mui/joy/CardContent';
 import CardActions from '@mui/joy/CardActions';
 import Select from '@mui/joy/Select';
 import Option from '@mui/joy/Option';
-import Radio from '@mui/joy/Radio';
-import RadioGroup from '@mui/joy/RadioGroup';
+import { ToggleButtonGroup } from '@mui/joy';
 import * as React from 'react';
 import PropTypes from 'prop-types';
 import backlogItemsService from '../services/backlogItems'
@@ -33,13 +32,13 @@ function BacklogItemAdder({ backlogItems, setBacklogItems }) {
         variant="outlined"
         sx={{
           maxHeight: 'max-content',
-          width: 260,
+          width: 210,
           mx: 'auto',
           overflow: 'auto',
         }}
       >
         <Typography level="title-lg" startDecorator={<PlaylistAddIcon />}>
-          Add new backlog item
+          New backlog item
         </Typography>
 
         <Divider inset="none" />
@@ -94,23 +93,43 @@ function BacklogItemAdder({ backlogItems, setBacklogItems }) {
             </FormControl>
 
             <FormControl>
-              <RadioGroup
-                name="completion-status-radio-group"
-                orientation='horizontal'
+              <ToggleButtonGroup
+                color='primary'
+                variant="solid"
                 value={newBacklogItem.completionStatus}
                 onChange={(event) =>
                   setNewBacklogItem({...newBacklogItem, completionStatus: event.target.value})
                 }
+                sx={{
+                  mt: 2,
+                  '--ButtonGroup-separatorSize': '0px',
+                  justifyContent: 'center'
+                }}
               >
-                <Radio value="Backlog" label="Backlog" size="sm" />
-                <Radio value="Complete" label="Complete" size="sm" />
-                <Radio value="Playing" label="Playing" size="sm" />
-              </RadioGroup>
+                <Button
+                  value='Backlog'
+                  sx={{ '&:focus': { outline: 'none' }, px: 1 }}
+                >
+                  Backlog
+                </Button>
+                <Button
+                  value='Complete'
+                  sx={{ '&:focus': { outline: 'none' }, px: 1  }}
+                >
+                  Complete
+                </Button>
+                <Button
+                  value='Playing'
+                  sx={{ '&:focus': { outline: 'none' }, px: 1  }}
+                >
+                  Playing
+                </Button>
+              </ToggleButtonGroup>
             </FormControl>
 
             <CardActions buttonFlex="0 1 120px">
               <Button variant="solid" color="primary" type='submit' sx={{ mr: 'auto' }}>
-                Add Backlog Item
+                Add Item
               </Button>
               <Button variant="solid" color="danger" onClick={() => setShowAdder(false)}>
                 Cancel
