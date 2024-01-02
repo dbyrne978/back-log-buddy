@@ -36,7 +36,6 @@ function BacklogItemAdder({ backlogItems, setBacklogItems }) {
           width: 260,
           mx: 'auto',
           overflow: 'auto',
-          resize: 'horizontal',
         }}
       >
         <Typography level="title-lg" startDecorator={<PlaylistAddIcon />}>
@@ -109,9 +108,12 @@ function BacklogItemAdder({ backlogItems, setBacklogItems }) {
               </RadioGroup>
             </FormControl>
 
-            <CardActions>
-              <Button variant="solid" color="primary" type='submit'>
+            <CardActions buttonFlex="0 1 120px">
+              <Button variant="solid" color="primary" type='submit' sx={{ mr: 'auto' }}>
                 Add Backlog Item
+              </Button>
+              <Button variant="solid" color="danger" onClick={() => setShowAdder(false)}>
+                Cancel
               </Button>
             </CardActions>
 
