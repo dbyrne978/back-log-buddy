@@ -34,6 +34,7 @@ function BacklogItemAdder({ backlogItems, setBacklogItems }) {
           maxHeight: 'max-content',
           width: 210,
           mx: 'auto',
+          my: '2px',
           overflow: 'auto',
         }}
       >
@@ -143,7 +144,13 @@ function BacklogItemAdder({ backlogItems, setBacklogItems }) {
   )
 
   const askForAdder = () => (
-    <Button variant="solid" color="primary" onClick={() => setShowAdder(true)}>
+    <Button
+      variant="solid"
+      color="primary"
+      onClick={() => setShowAdder(true)}
+      startDecorator={<PlaylistAddIcon />}
+      sx={{ my: '2px' }}
+    >
       Add New Backlog Item
     </Button>
   )
