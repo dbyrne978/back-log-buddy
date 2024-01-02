@@ -16,8 +16,9 @@ import PropTypes from 'prop-types';
 import backlogItemsService from '../services/backlogItems'
 
 // adds new backlog item and media card to display it
-function BacklogItemAdder({ backlogItems, setBacklogItems }) {
+function BacklogItemAdder({ backlogItems, setBacklogItems, user }) {
   const emptyBacklogItem = {
+    user: user,
     title: '',
     format: 'Movie',
     completionStatus: 'Backlog',
@@ -52,6 +53,7 @@ function BacklogItemAdder({ backlogItems, setBacklogItems }) {
               var alreadyExists = backlogItems.find((backlogItem) =>
                 backlogItem.title == newBacklogItem.title
                 && backlogItem.format == newBacklogItem.format
+                && backlogItem.user == newBacklogItem.user
               )
 
               if (alreadyExists) alert("This item is already in your log")
@@ -59,7 +61,8 @@ function BacklogItemAdder({ backlogItems, setBacklogItems }) {
                 backlogItemsService
                   .create(newBacklogItem)
                   .then(returnedBacklogItem => {
-                    setBacklogItems(backlogItems.concat(returnedBacklogItem))
+                    setNewBacklogItem({...newBacklogItem, id:'new'})
+                    setBacklogItems(backlogItems.concat(newBacklogItem))
                     setNewBacklogItem({...emptyBacklogItem})
                     setShowAdder(false)
                   })

@@ -52,6 +52,7 @@ function App() {
       <BacklogItemAdder
         backlogItems={backlogItems}
         setBacklogItems={setBacklogItems}
+        user={user}
       />
 
       {filteredItems.map(backlogItem => {
